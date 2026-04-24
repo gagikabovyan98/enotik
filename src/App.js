@@ -8,6 +8,7 @@ import AutoLoans from './pages/AutoLoans';
 import CollateralLoans from './pages/CollateralLoans';
 import Job from './pages/Job';
 import './App.css';
+import FooterBar from './components/FooterBar';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/collateral-loans" element={<CollateralLoans />} />
         <Route path="/Job" element={<Job />} />
       </Routes>
+      <FooterBar />
     </BrowserRouter>
   );
 }
