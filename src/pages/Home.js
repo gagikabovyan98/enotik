@@ -30,10 +30,15 @@ const Home = () => {
               </Link>
             </div>
           </section>
+
+
+          <section class="slider__block">
+      
+          </section>
         </div>
       </div>
 
-    
+
     </div>
 
 

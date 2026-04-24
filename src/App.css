@@ -367,7 +367,7 @@ span {
   }
 
     .Footer {
-      border-radius: 20px;
+      border-radius: 20px 20px 0px 0px;
     }
 
       .footer__content {
@@ -579,4 +579,58 @@ span {
   padding-top: calc(var(--space) / 2);
   padding-bottom: calc(var(--space) / 2);
   margin-top: 25px;
+}
+
+
+
+
+/* Слайдер  */
+
+/* Стили для слайдера */
+.accordion-slider {
+    max-width: 600px;
+    margin: auto;
+}
+
+/* Скрываем ответы по умолчанию */
+.accordion-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.3s ease-out;
+    background-color: #ecf0f1;
+    padding: 0; /* Убираем отступы, когда блок закрыт */
+}
+
+/* Стили для вопроса (ссылки) */
+.accordion-question {
+    display: block;
+    background-color: #2c3e50;
+    color: white;
+    padding: 18px;
+    font-size: 18px;
+    text-decoration: none; /* Убираем подчеркивание ссылки */
+    cursor: pointer;
+    border-bottom: 1px solid #222;
+}
+
+/* Ключевое правило: показываем ответ, если его id является целью ссылки */
+#q1:target ~ .accordion-item .accordion-answer,
+#q2:target ~ .accordion-item .accordion-answer,
+#q3:target ~ .accordion-item .accordion-answer,
+#q4:target ~ .accordion-item .accordion-answer,
+#q5:target ~ .accordion-item .accordion-answer {
+     max-height: 500px; /* Высота для раскрытия */
+     padding: 15px; /* Отступы появляются при открытии */
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+    .accordion-slider {
+        padding: 10px;
+    }
+    
+    .accordion-question {
+        font-size: 16px;
+        padding: 15px;
+    }
 }
