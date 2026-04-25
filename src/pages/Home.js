@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Calculator from '../components/Calculator';
+import ReviewsBlock from '../components/ReviewsBlock';
 import headerBanner from '../images/header__banner.png'; // Импортируем картинку
 
 
@@ -30,10 +31,8 @@ const Home = () => {
               </Link>
             </div>
           </section>
-
-
-          <section class="slider__block">
-      
+          <section class="Reviews__block">
+            <ReviewsBlock />
           </section>
         </div>
       </div>

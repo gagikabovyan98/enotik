@@ -265,6 +265,11 @@ span {
   font-weight: bold;
 }
 
+
+.Reviews__block {
+  margin-top: 200px;
+}
+
 @media (max-width:1440px) {
   .header__h1 {
     font-size: 74px;
