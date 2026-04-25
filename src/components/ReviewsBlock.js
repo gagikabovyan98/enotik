@@ -1,9 +1,9 @@
 // src/components/ReviewsBlock.js
 import React from 'react';
-import avatar1 from '../images/avatar1.png'; // Путь к картинкам
-import avatar2 from '../images/avatar2.png';
-import avatar3 from '../images/avatar3.png';
-import avatar4 from '../images/avatar4.png';
+import avatar1 from '../images/avatar1.webp'; // Путь к картинкам
+import avatar2 from '../images/avatar2.webp';
+import avatar3 from '../images/avatar3.webp';
+import avatar4 from '../images/avatar4.webp';
 import styles from './ReviewsBlock.module.css'; // Импортируем стили
 
 // Данные для отзывов

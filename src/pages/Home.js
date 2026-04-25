@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Calculator from '../components/Calculator';
 import ReviewsBlock from '../components/ReviewsBlock';
-import headerBanner from '../images/header__banner.png'; // Импортируем картинку
+import headerBanner from '../images/header__banner.webp'; // Импортируем картинку
 
 
 const Home = () => {
