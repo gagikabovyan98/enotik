@@ -11,9 +11,9 @@ const CardJob = ({ nameis, image, spec, link }) => {
       <div className="card-content">
         <h3>{nameis}</h3>
        
-        <p><strong>Напрапвление:</strong> {spec}</p>
+        <p class="card-content-job"><strong>Напрапвление:</strong> {spec}</p>
         
-        <a href={link} target="_blank" rel="noopener noreferrer" className="btn-apply">Оставить заявку</a>
+        <a href={link} target="_blank" rel="noopener noreferrer" className="btn-apply">ОСТАВИТЬ ЗАЯВКУ</a>
       </div>
     </div>
   );

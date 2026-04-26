@@ -1,11 +1,11 @@
 import React from 'react';
 import CardLoan from '../components/CardLoan';
-import rus from '../images/rus.png'; // Импортируем картинку
-import sov from '../images/sov.png'; // Импортируем картинку
-import ren from '../images/renesans.png'; // Импортируем картинку
-import atb from '../images/atb.jpg'; // Импортируем картинку
-import tbank from '../images/tbank.png'; // Импортируем картинку
-import alfa from '../images/alfa.png'; // Импортируем картинку
+import rus from '../images/rus.webp'; // Импортируем картинку
+import sov from '../images/sov.webp'; // Импортируем картинку
+import ren from '../images/renesans.webp'; // Импортируем картинку
+import atb from '../images/atb.webp'; // Импортируем картинку
+import tbank from '../images/tbank.webp'; // Импортируем картинку
+import alfa from '../images/alfa.webp'; // Импортируем картинку
 
 
 
@@ -17,7 +17,7 @@ const ConsumerLoans = () => {
       image: rus, // Ссылка на картинку
       rate: 'До 65% годовых',
       term: 'До 60 месяцев',
-      sum: 'До 3 000 000 ₽',
+      sum: '30 000 - 3 млн ₽',
       link: 'https://fin-lg.com/aff_c?aff_id=145356&offer_id=6459&p=10695&erid=2W5zFH1t71s'
     },
       {
@@ -25,7 +25,7 @@ const ConsumerLoans = () => {
       image: sov, // Ссылка на картинку
       rate: 'До 30% годовых',
       term: 'До 5 лет',
-      sum: 'До 5 000 000 ₽',
+      sum: '30 000 - 5 млн ₽',
       link: 'https://fin-lg.com/aff_c?aff_id=145356&offer_id=5199&p=10695&erid=2W5zFGFFjxt'
     },
       {
@@ -33,7 +33,7 @@ const ConsumerLoans = () => {
       image: ren, // Ссылка на картинку
       rate: 'До 40% годовых',
       term: 'До 84 месяцев',
-      sum: 'До 2 000 000 ₽',
+      sum: '30 000 - 2 млн ₽',
       link: 'https://go.leadgid.ru/aff_c?aff_id=145356&offer_id=6138&p=10695&erid=2W5zFJeimse'
     },
       {
@@ -41,7 +41,7 @@ const ConsumerLoans = () => {
       image: atb, // Ссылка на картинку
       rate: 'До 39% годовых',
       term: 'До 84 месяцев',
-      sum: 'До 5 000 000 ₽',
+      sum: '30 000 - 5 млн ₽',
       link: 'https://fin-lg.com/aff_c?aff_id=145356&offer_id=2583&p=10695&erid=LjN8KGDaw'
     },
       {
@@ -49,7 +49,7 @@ const ConsumerLoans = () => {
       image: tbank, // Ссылка на картинку
       rate: 'До 40% годовых',
       term: 'До 5 лет',
-      sum: 'До 5 000 000 ₽',
+      sum: '50 000 - 5 млн ₽',
       link: 'https://my.saleads.pro/s/gf6yt?erid=2VtzqvB9uxS'
     },
       {
@@ -57,7 +57,7 @@ const ConsumerLoans = () => {
       image: tbank, // Ссылка на картинку
       rate: 'До 41% годовых',
       term: 'До 15 лет',
-      sum: 'До 30 000 000 ₽',
+      sum: '30 000 - 30 млн ₽',
       link: 'https://my.saleads.pro/s/jscd1?erid=2VtzqxkwKg2'
     },
       {
@@ -65,7 +65,7 @@ const ConsumerLoans = () => {
       image: alfa, // Ссылка на картинку
       rate: 'До 54% годовых',
       term: 'До 15 лет',
-      sum: 'До 30 000 000 ₽',
+      sum: '30 000 - 30 млн ₽',
       link: 'https://my.saleads.pro/s/23z7g?erid=2Vtzqw5BBDp'
     },
       {
@@ -73,7 +73,7 @@ const ConsumerLoans = () => {
       image: alfa, // Ссылка на картинку
       rate: 'До 37% годовых',
       term: 'До 5 лет',
-      sum: 'До 7 500 000 ₽',
+      sum: '30 000 - 7 млн ₽',
       link: 'https://my.saleads.pro/s/blewj?erid=2VtzqwLPiD3'
     },
    ];

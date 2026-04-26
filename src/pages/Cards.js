@@ -1,14 +1,14 @@
 import React from 'react';
 import CardLoan from '../components/DebitCards';
-import vtb from '../images/vtb.png'; // Импортируем картинку
-import alfa from '../images/alfa.png'; // Импортируем картинку
-import mts from '../images/mts.png'; // Импортируем картинку
-import fora from '../images/fora.jpg'; // Импортируем картинку
-import ural from '../images/ural.png'; // Импортируем картинку
-import bspb from '../images/bspb.png'; // Импортируем картинку
-import bars from '../images/bars.png'; // Импортируем картинку
-import otp from '../images/otp.png'; // Импортируем картинку
-import tin from '../images/tbank.png'; // Импортируем картинку
+import vtb from '../images/vtb.webp'; // Импортируем картинку
+import alfa from '../images/alfa.webp'; // Импортируем картинку
+import mts from '../images/mts.webp'; // Импортируем картинку
+import fora from '../images/fora.webp'; // Импортируем картинку
+import ural from '../images/ural.webp'; // Импортируем картинку
+import bspb from '../images/bspb.webp'; // Импортируем картинку
+import bars from '../images/bars.webp'; // Импортируем картинку
+import otp from '../images/otp.webp'; // Импортируем картинку
+import tin from '../images/tbank.webp'; // Импортируем картинку
 
 
 
@@ -32,16 +32,16 @@ const Cards = () => {
     },
     {
       bank: 'МТС Деньги - Дебетовая карта',
-      opis: '30% на связь',
+      opis: 'До 10 000 ₽ кешбэк в месяц',
       opis1: '5% в супермаркетах',
-      opis2: 'До 10 000 ₽ кешбэк в месяц',
+      opis2: '30% на связь',
       image: mts, // Ссылка на картинку
       link: 'https://fin-lg.com/aff_c?aff_id=145356&offer_id=6766&p=10695&erid=2W5zFFy4MBv'
     },
     {
       bank: 'Фора-Банк - Дебетовая Карта «Все включено»',
-      opis: 'До 40% выгода от партнеров',
-      opis1: 'До 10 000 ₽ кешбэк в месяц',
+      opis: 'До 10 000 ₽ кешбэк в месяц',
+      opis1: 'До 40% выгода от партнеров',
       opis2: 'Бесплатное обслуживание',
       image: fora, // Ссылка на картинку
       link: 'https://go.leadgid.ru/aff_c?aff_id=145356&offer_id=6236&p=10695&erid=LjN8KXfdi'
@@ -56,8 +56,8 @@ const Cards = () => {
     },
     {
       bank: 'БСПБ - Дебетовая карта Яркая',
-      opis: 'До 15% годовых на остаток',
-      opis1: 'Кешбэк до 25%',
+      opis: 'Кешбэк до 25%',
+      opis1: 'До 15% годовых на остаток',
       opis2: 'Бесплатное обслуживание',
       image: bspb, // Ссылка на картинку
       link: 'https://go.leadgid.ru/aff_c?aff_id=145356&offer_id=7224&p=10695&erid=2W5zFH96mxL'
@@ -120,9 +120,9 @@ const Cards = () => {
     },
     {
       bank: 'Альфа Банк - карта для самозанятых',
-      opis: 'Бесплатное обслуживание',
+      opis: 'До 100% кешбэк на остаток',
       opis1: 'Низкие налоговые ставки',
-      opis2: 'До 100% кешбэк на остаток',
+      opis2: 'Бесплатное обслуживание',
       image: alfa, // Ссылка на картинку
       link: 'https://my.saleads.pro/s/7z95y?erid=2VtzquvL38z'
     },
@@ -144,24 +144,24 @@ const Cards = () => {
     },
     {
       bank: 'Т-Банк - дебетовая карта Black Premium',
-      opis: 'До 14% годовых по вкладу',
+      opis: 'Кэшбэк 5% на рестораны',
       opis1: 'До 60 000 ₽ кэшбэк за покупки',
-      opis2: 'Кэшбэк 5% на рестораны',
+      opis2: 'До 14% годовых по вкладу',
       image: tin, // Ссылка на картинку
       link: 'https://my.saleads.pro/s/atuzw?erid=2VtzqupQ61c'
     },
     {
       bank: 'Т-Банк - дебетовая карта для нерезидентов',
-      opis: 'Переводы за рубеж до 5 млн',
-      opis1: '24/7 на вашем языке',
+      opis: 'Кешбэк до 3000₽ в месяц',
+      opis1: 'Переводы за рубеж до 5 млн',
       opis2: 'Бесплатное обслуживание',
       image: tin, // Ссылка на картинку
       link: 'https://my.saleads.pro/s/h1kev?erid=2VtzqvhJsaN'
     },
     {
       bank: 'Т-Банк - дебетовая карта ALL Airlines',
-      opis: '1,5% за повседневные покупки',
-      opis1: 'До 30% кэшбэк милями',
+      opis: 'До 30% кэшбэк милями',
+      opis1: '1,5% за повседневные покупки',
       opis2: 'До 5% за авиабилеты',
       image: tin, // Ссылка на картинку
       link: 'https://my.saleads.pro/s/4gyxa?erid=2Vtzqv8CvrA'
@@ -176,9 +176,9 @@ const Cards = () => {
     },
     {
       bank: 'Т-Банк - карта Black Молодежная',
-      opis: 'Вернем 1% за все покупки',
+      opis: 'До 30% — от партнеров',
       opis1: 'Бесплатная доставка',
-      opis2: 'До 30% — от партнеров',
+      opis2: 'Вернем 1% за все покупки',
       image: tin, // Ссылка на картинку
       link: 'https://my.saleads.pro/s/fbwjn?erid=2VtzqwntwD8'
     },

@@ -1,0 +1,84 @@
+/* src/components/BankTicker.css */
+
+/* Основной контейнер */
+.ticker-container {
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  padding: 10px 0;
+  box-sizing: border-box;
+  
+  /* Анимация движения */
+  animation: ticker-move 20s linear infinite; /* Длительность 20 секунд */
+}
+
+/* Ключевые кадры для анимации */
+@keyframes ticker-move {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* Стили для одного элемента (логотипа) */
+.ticker-item {
+  flex-shrink: 0; /* Запрещаем сжатие логотипа */
+  margin-right: 6px; /* УМЕНЬШИЛИ ЗДЕСЬ с 20px до 12px */
+  display: flex;
+  justify-content: center;
+}
+
+.ticker-item img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* --- Адаптивность (отступы уменьшаются вместе с экраном) --- */
+@media (max-width: 425px) {
+  .ticker-item {
+    margin-right: 8px; /* На маленьких телефонах еще меньше */
+    flex-basis: calc(25% - 8px); 
+    padding: 0 3px;
+    min-width: auto;
+    width: auto;
+    max-width: none;
+  }
+
+  .ticker-container {
+    width: 555px !important;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .ticker-item {
+    margin-right: 10px; /* На планшетах средний отступ */
+    flex-basis: calc(20% - 10px);
+    padding: 0;
+    min-width: auto;
+    width: auto;
+    max-width: none;
+  }
+}
+
+@media (min-width: 1025px) {
+  .ticker-item {
+    margin-right: 12px; /* На десктопах возвращаемся к основному значению */
+    flex-basis: calc(12% - 12px);
+    min-width: auto;
+    width: auto;
+    max-width: none;
+    
+    @media (min-width: 1440px) {
+      margin-right: 16px; /* На широких экранах можно чуть увеличить */
+      flex-basis: calc(12% - 16px);
+    }
+
+    @media (min-width: 1920px) {
+      margin-right: 20px; /* На очень широких экранах отступ как раньше */
+      flex-basis: calc(8% - 20px);
+    }
+}
+}

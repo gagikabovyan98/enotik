@@ -1,11 +1,11 @@
 import React from "react";
 import CardLoan from "../components/CardLoan";
-import zaimerkart from '../images/zaimerkarta.png'; // Импортируем картинку
-import bars from '../images/bars.png'; // Импортируем картинку
-import rus from '../images/rus.png'; // Импортируем картинку
-import ural from '../images/ural.png'; // Импортируем картинку
-import halva from '../images/halva.png'; // Импортируем картинку
-import tin from '../images/tbank.png'; // Импортируем картинку
+import zaimerkart from '../images/zaimer.webp'; // Импортируем картинку
+import bars from '../images/bars.webp'; // Импортируем картинку
+import rus from '../images/rus.webp'; // Импортируем картинку
+import ural from '../images/ural.webp'; // Импортируем картинку
+import halva from '../images/halva.webp'; // Импортируем картинку
+import tin from '../images/tbank.webp'; // Импортируем картинку
 
 
 const AutoLoans = () => {
@@ -15,7 +15,7 @@ const AutoLoans = () => {
       image: zaimerkart, // Ссылка на картинку
       rate: '0,65% в день',
       term: 'До 180 дней',
-      sum: 'До 100 000 рублей',
+      sum: '15 000 - 100 000 ₽',
       link: 'https://fin-lg.com/aff_c?aff_id=145356&offer_id=6736&p=10695&erid=2W5zFGNo5ep'
     },
      {
@@ -23,7 +23,7 @@ const AutoLoans = () => {
       image: bars, // Ссылка на картинку
       rate: 'До 115 дней без %',
       term: 'До 5 лет',
-      sum: 'До 1 000 000 ₽',
+      sum: '10 000 - 1 000 000 ₽',
       link: 'https://fin-lg.com/aff_c?aff_id=145356&offer_id=6474&p=10695&erid=2W5zFHxn2e4'
     },
      {
@@ -31,7 +31,7 @@ const AutoLoans = () => {
       image: rus, // Ссылка на картинку
       rate: 'До 59% годовых',
       term: 'До 5 лет',
-      sum: 'До 1 000 000 ₽',
+      sum: '30 000 - 1 000 000 ₽',
       link: 'https://go.leadgid.ru/aff_c?aff_id=145356&offer_id=6460&p=10695&erid=2W5zFH3N6JD'
     },
      {
@@ -39,7 +39,7 @@ const AutoLoans = () => {
       image: ural, // Ссылка на картинку
       rate: 'От 34,9% годовых',
       term: 'До 5 лет',
-      sum: 'До 5 000 000 ₽',
+      sum: '10 000 - 5 000 000 ₽',
       link: 'https://fin-lg.com/aff_c?aff_id=145356&offer_id=5567&p=10695&erid=2W5zFJjKetp'
     },
      {
@@ -47,7 +47,7 @@ const AutoLoans = () => {
       image: halva, // Ссылка на картинку
       rate: 'До 15% годовых',
       term: 'До 7 лет',
-      sum: 'До 100 000 ₽',
+      sum: '10 000 - 100 000 ₽',
       link: 'https://fin-lg.com/aff_c?aff_id=145356&offer_id=2413&p=10695&erid=LjN8KTAzF'
     },
      {
@@ -55,7 +55,7 @@ const AutoLoans = () => {
       image: tin, // Ссылка на картинку
       rate: 'До 62% годовых',
       term: '5 лет',
-      sum: 'До 1 000 000 ₽',
+      sum: '15 000 - 1 000 000 ₽',
       link: 'https://my.saleads.pro/s/ounml?erid=2VtzqvRynmt'
     },
      {
@@ -63,7 +63,7 @@ const AutoLoans = () => {
       image: tin, // Ссылка на картинку
       rate: 'До 62% годовых',
       term: '5 лет',
-      sum: 'До 1 000 000 ₽',
+      sum: '15 000 - 1 000 000 ₽',
       link: 'https://my.saleads.pro/s/8dski?erid=2Vtzqw6fAWA'
     },
  ];

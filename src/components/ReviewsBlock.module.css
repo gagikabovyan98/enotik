@@ -53,3 +53,10 @@
 .reviewText {
   font-size: 0.95rem;
 }
+
+@media (max-width: 425px) {
+  .reviewsSection {
+
+  margin-top: -220px;
+}
+}

@@ -11,10 +11,8 @@ import './App.css';
 import FooterBar from './components/FooterBar';
 import { MetrikaCounter } from 'react-metrika';
 
-
-
-function App() {
-  return (
+function App() { 
+  return ( 
     <>
       <MetrikaCounter id={108751085} />
       <BrowserRouter>
@@ -30,7 +28,6 @@ function App() {
         </Routes>
         <FooterBar />
       </BrowserRouter>
-
     </>
   );
 }

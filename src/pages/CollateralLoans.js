@@ -1,10 +1,10 @@
 import React from "react";
 import CardLoan from "../components/CardLoan";
-import draiv from '../images/draiv.png'; // Импортируем картинку
-import car from '../images/car.png'; // Импортируем картинку
-import dobro from '../images/dobro.png'; // Импортируем картинку
-import sovk from '../images/sov.png'; // Импортируем картинку
-import tbank from '../images/tbank.png'; // Импортируем картинку
+import draiv from '../images/draiv.webp'; // Импортируем картинку
+import car from '../images/car.webp'; // Импортируем картинку
+import dobro from '../images/dobro.webp'; // Импортируем картинку
+import sovk from '../images/sov.webp'; // Импортируем картинку
+import tbank from '../images/tbank.webp'; // Импортируем картинку
 
 const CollateralLoans = () => {
  const demoData = [
@@ -13,7 +13,7 @@ const CollateralLoans = () => {
       image: draiv, // Ссылка на картинку
       rate: 'До 9% в месяц',
       term: 'До 3 лет',
-      sum: 'До 3 000 000 ₽',
+      sum: '10 000 - 500 000 ₽',
       link: 'https://fin-lg.com/aff_c?aff_id=145356&offer_id=6864&p=10695&erid=2W5zFHwPkAU'
     },
      {
@@ -21,7 +21,7 @@ const CollateralLoans = () => {
       image: car, // Ссылка на картинку
       rate: 'До 129% годовых',
       term: 'До 48 месяцев',
-      sum: 'До 1 000 000 ₽',
+      sum: '50 000 - 1 млн ₽',
       link: 'https://fin-lg.com/aff_c?aff_id=145356&offer_id=6848&p=10695&erid=2W5zFJEsCvt'
     },
      {
@@ -29,7 +29,7 @@ const CollateralLoans = () => {
       image: dobro, // Ссылка на картинку
       rate: '89% в год',
       term: 'До 5 лет',
-      sum: 'До 1 000 000 ₽',
+      sum: '50 000 - 1 млн ₽',
       link: 'https://fin-lg.com/aff_c?aff_id=145356&offer_id=6625&p=10695&erid=LjN8KZcbU'
     },
      {
@@ -37,7 +37,7 @@ const CollateralLoans = () => {
       image: sovk, // Ссылка на картинку
       rate: 'До 20% годовых',
       term: 'До 180 месяцев',
-      sum: 'До 30 000 000 ₽',
+      sum: '200 000 - 30 млн ₽',
       link: 'https://fin-lg.com/aff_c?aff_id=145356&offer_id=6584&p=10695&erid=2W5zFGMBh6G'
     },
      {
@@ -45,7 +45,7 @@ const CollateralLoans = () => {
       image: sovk, // Ссылка на картинку
       rate: 'До 15% годовых',
       term: 'До 60 месяцев',
-      sum: 'До 15 000 000 ₽',
+      sum: '150 000 - 15 млн ₽',
       link: 'https://fin-lg.com/aff_c?aff_id=145356&offer_id=6221&p=10695&erid=2W5zFGGjjFE'
     },
      {
@@ -53,7 +53,7 @@ const CollateralLoans = () => {
       image: tbank, // Ссылка на картинку
       rate: 'До 32% годовых',
       term: 'до 15 лет',
-      sum: 'до 30 000 000 ₽',
+      sum: '500 000 - 30 млн ₽',
       link: 'https://fin-lg.com/aff_c?aff_id=145356&offer_id=4740&p=10695&erid=LjN8KFSkV'
     },
  ];

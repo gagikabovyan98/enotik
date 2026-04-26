@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import './../App.css';
+import PrivacyPolicyModal from '../components/PrivacyPolicyModal';
 
 const FooterBar = () => {
     return (
@@ -16,14 +17,21 @@ const FooterBar = () => {
                         <p>Мы используем файлы cookie, чтобы предоставить пользователям больше возможностей при посещении сайта Енот Мани</p>
                         <p>Продолжая пользоваться сайтом, вы даёте согласие на использование cookie и обработку персональных данных.</p>
                         <p>Условия использования  </p>
-                        <Link to="/Loans">
-                            <p><span class="footer__a">Смотрите здесь</span></p>
-                        </Link>
+
+                           
                         <p>Оценивайте свои финансовые возможности и риски</p>
                     </div>
 
                 </div>
+
+
+
+                          <div class="Political">
+                             <PrivacyPolicyModal />
+                        </div>
             </footer>
+
+                          
         </section>
     );
 };
