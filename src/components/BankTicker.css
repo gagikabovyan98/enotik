@@ -10,7 +10,7 @@
   box-sizing: border-box;
   
   /* Анимация движения */
-  animation: ticker-move 10s linear infinite; /* Длительность 20 секунд */
+  animation: ticker-move 20s linear infinite; /* Длительность увеличена до 20 секунд */
 }
 
 /* Ключевые кадры для анимации */
@@ -19,16 +19,17 @@
     transform: translateX(0);
   }
   to {
-    transform: translateX(-100%);
+    transform: translateX(-100vw); /* Сдвигаем на ширину вьюпорта */
   }
 }
 
 /* Стили для одного элемента (логотипа) */
 .ticker-item {
   flex-shrink: 0; /* Запрещаем сжатие логотипа */
-  margin-right: 6px; /* УМЕНЬШИЛИ ЗДЕСЬ с 20px до 12px */
+  margin-right: 12px; /* Основной отступ */
   display: flex;
   justify-content: center;
+  min-width: auto; /* Важно для адаптива */
 }
 
 .ticker-item img {
@@ -40,23 +41,29 @@
 @media (max-width: 425px) {
   .ticker-item {
     margin-right: 8px; /* На маленьких телефонах еще меньше */
-    flex-basis: calc(25% - 8px); 
-    padding: 0 3px;
+    flex-basis: auto; /* Убираем фиксированные flex-basis, чтобы элементы не вылазили */
+    padding: 0;
     min-width: auto;
     width: auto;
     max-width: none;
   }
+}
 
-  .ticker-container {
-    width: 555px !important;
+@media (min-width: 426px) and (max-width: 768px) {
+  .ticker-item {
+    margin-right: 10px; /* На планшетах средний отступ */
+    flex-basis: auto;
+    padding: 0;
+    min-width: auto;
+    width: auto;
+    max-width: none;
   }
 }
 
-@media (min-width: 601px) and (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1024px) {
   .ticker-item {
-    margin-right: 10px; /* На планшетах средний отступ */
-    flex-basis: calc(20% - 10px);
-    padding: 0;
+    margin-right: 12px; /* На средних экранах */
+    flex-basis: calc(15% - 12px); /* Пример для ~6-7 элементов в ряд */
     min-width: auto;
     width: auto;
     max-width: none;
@@ -65,27 +72,20 @@
 
 @media (min-width: 1025px) {
   .ticker-item {
-    margin-right: 12px; /* На десктопах возвращаемся к основному значению */
-    flex-basis: calc(12% - 12px);
+    margin-right: 12px; /* На десктопах */
+    flex-basis: calc(12% - 12px); /* Для ~8 элементов в ряд */
     min-width: auto;
     width: auto;
     max-width: none;
     
     @media (min-width: 1440px) {
-      margin-right: 16px; /* На широких экранах можно чуть увеличить */
-      flex-basis: calc(12% - 16px);
+      margin-right: 16px; /* На широких экранах */
+      flex-basis: calc(10% - 16px); /* Для ~10 элементов в ряд */
     }
 
     @media (min-width: 1920px) {
-      margin-right: 20px; /* На очень широких экранах отступ как раньше */
-      flex-basis: calc(8% - 20px);
+      margin-right: 20px; /* На очень широких экранах */
+      flex-basis: calc(8% - 20px); /* Для ~12 элементов в ряд */
     }
 }
-
-}
-
-@media (max-width: 320px) {
-    .ticker-container {
-      width: 300px !important;
-  }
 }
