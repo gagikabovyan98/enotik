@@ -10,7 +10,7 @@
   box-sizing: border-box;
   
   /* Анимация движения */
-  animation: ticker-move 20s linear infinite; /* Длительность 20 секунд */
+  animation: ticker-move 10s linear infinite; /* Длительность 20 секунд */
 }
 
 /* Ключевые кадры для анимации */
@@ -81,4 +81,11 @@
       flex-basis: calc(8% - 20px);
     }
 }
+
+}
+
+@media (max-width: 320px) {
+    .ticker-container {
+      width: 300px !important;
+  }
 }

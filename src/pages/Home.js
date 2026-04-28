@@ -4,8 +4,6 @@ import Calculator from '../components/Calculator';
 import ReviewsBlock from '../components/ReviewsBlock';
 import { BankTicker } from '../components/BankTicker'; // <-- Импортируем наш новый компонент
 import headerBanner from '../images/header__banner.webp';
-import bars from '../images/bars.webp'; // Импортируем картинку
-import otp from '../images/otp.webp'; // Импортируем картинку
 import tin from '../images/tbank.webp'; // Импортируем картинку
 import mts from '../images/mts.webp'; // Импортируем картинку
 import fora from '../images/fora.webp'; // Импортируем картинку
@@ -19,8 +17,7 @@ const Home = () => {
    // --- ВСТАВЬТЕ ЭТОТ БЛОК ЗДЕСЬ ---
    // Массив данных для бегущей строки. Логотипы должны быть доступны по URL.
    const banks = [
-     { name: 'Тинькофф', logo: bars }, // Переменная, а не строка
-    { name: 'МТС Банк', logo: otp },
+
     { name: 'Сбер', logo: tin },
     { name: 'Сбер', logo: mts },
     { name: 'Сбер', logo: fora },
@@ -29,8 +26,8 @@ const Home = () => {
     { name: 'Сбер', logo: ural },
     { name: 'Сбер', logo: bspb },
     { name: 'Сбер', logo: ural },
-    { name: 'Сбер', logo: bspb },
-    { name: 'Сбер', logo: bspb },
+
+  
 
      
      
