@@ -1,6 +1,4 @@
-import { Link } from 'react-router-dom';
 import './../App.css';
-import PrivacyPolicyModal from '../components/PrivacyPolicyModal';
 
 const FooterBar = () => {
     return (
@@ -23,12 +21,6 @@ const FooterBar = () => {
                     </div>
 
                 </div>
-
-
-
-                          <div class="Political">
-                             <PrivacyPolicyModal />
-                        </div>
             </footer>
 
                           
