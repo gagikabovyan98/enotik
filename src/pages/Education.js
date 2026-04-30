@@ -12,7 +12,7 @@ import tin from '../images/tbank.webp'; // Импортируем картинк
 
 
 
-const Cards = () => {
+const Educ = () => {
   const demoData = [
     {
       bank: 'ВТБ - Дебетовая карта "МИР Весёлая"',
@@ -203,4 +203,4 @@ const Cards = () => {
     </div>
   );
 };
-export default Cards;
+export default Educ;
