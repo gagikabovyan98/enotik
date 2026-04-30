@@ -1,6 +1,6 @@
 import './../App.css'; // Импорт стилей из корня
 
-const Education = ({ bank, opis, opis1, opis2, image, link }) => {
+const Education = ({ bank, naprav, image, link }) => {
   return (
     <div className="card">
       {/* Блок для изображения */}
@@ -8,11 +8,12 @@ const Education = ({ bank, opis, opis1, opis2, image, link }) => {
         <img src={image} alt={bank} />
       </div>
       
-      <div className="card-content-debit">
-        {/* <h3>{bank}</h3> */}
-        <p class="card-content-debit-opis">{opis}</p>
-        <p>{opis1}</p>
-        <p>{opis2}</p>
+      <div className="card-content">
+        <div class="cart-content-napr">
+          <p class="cart-content-naprav"><strong>Направление</strong></p>
+          <p class="cart-content-naprav-p"><strong>{naprav}</strong></p>
+          </div>
+
         <a href={link} target="_blank" rel="noopener noreferrer" className="btn-apply">ПОЛУЧИТЬ ДЕНЬГИ</a>
       </div>
 

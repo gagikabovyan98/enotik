@@ -10,9 +10,10 @@ import Job from './pages/Job';
 import './App.css';
 import FooterBar from './components/FooterBar';
 import { MetrikaCounter } from 'react-metrika';
+import Education from './pages/Education';
 
-function App() { 
-  return ( 
+function App() {
+  return (
     <>
       <MetrikaCounter id={108751085} />
       <BrowserRouter>
@@ -25,7 +26,7 @@ function App() {
           <Route path="/auto-loans" element={<AutoLoans />} />
           <Route path="/collateral-loans" element={<CollateralLoans />} />
           <Route path="/Job" element={<Job />} />
-          <Route path="/Education" element={<Job />} />
+          <Route path="/Education" element={<Education />} />
         </Routes>
         <FooterBar />
       </BrowserRouter>

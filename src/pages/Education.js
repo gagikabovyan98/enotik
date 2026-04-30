@@ -1,194 +1,127 @@
 import React from 'react';
 import Education from '../components/Education';
-import vtb from '../images/vtb.webp'; // Импортируем картинку
-import alfa from '../images/alfa.webp'; // Импортируем картинку
-import mts from '../images/mts.webp'; // Импортируем картинку
-import fora from '../images/fora.webp'; // Импортируем картинку
-import ural from '../images/ural.webp'; // Импортируем картинку
-import bspb from '../images/bspb.webp'; // Импортируем картинку
-import bars from '../images/bars.webp'; // Импортируем картинку
-import otp from '../images/otp.webp'; // Импортируем картинку
-import tin from '../images/tbank.webp'; // Импортируем картинку
+import logocar from '../images/logocar.webp'; // Импортируем картинку
+import psiho from '../images/psiho.webp'; // Импортируем картинку
+import insperian from '../images/insperian.webp'; // Импортируем картинку
+import skilkids from '../images/skilkids.webp'; // Импортируем картинку
+import ipo from '../images/ipo.webp'; // Импортируем картинку
+import easy from '../images/easy.webp'; // Импортируем картинку
+import mds from '../images/mds.webp'; // Импортируем картинку
+import runo from '../images/runo.webp'; // Импортируем картинку
+import school1 from '../images/school1.webp'; // Импортируем картинку
+import mti from '../images/mti.webp'; // Импортируем картинку
+import bonnie from '../images/bonnie.webp'; // Импортируем картинку
+import lend from '../images/lend.webp'; // Импортируем картинку
+import miin from '../images/miin.webp'; // Импортируем картинку
+import tochkaznanii from '../images/tochkaznanii.webp'; // Импортируем картинку
+import smart from '../images/smart.webp'; // Импортируем картинку
+import merion from '../images/merion.webp'; // Импортируем картинку
+import mbi from '../images/mbi.webp'; // Импортируем картинку
+import mipo from '../images/mipo.webp'; // Импортируем картинку
+import algo from '../images/algo.webp'; // Импортируем картинку
+
+
+
+
 
 
 
 const Educ = () => {
   const demoData = [
     {
-      bank: 'ВТБ - Дебетовая карта "МИР Весёлая"',
-      opis: 'Кешбэк рублями до 3000 ₽',
-      opis1: 'Бесплатная доставка по России',
-      opis2: 'Бесплатное обслуживание',
-      image: vtb, // Ссылка на картинку
-      link: 'https://fin-lg.com/aff_c?aff_id=145356&offer_id=7332&p=10695&erid=2W5zFJuUpi5'
+      naprav: 'Психология и коучинг',
+      image: psiho, // Ссылка на картинку
+      link: 'https://my.saleads.pro/s/6wph8?erid=2VtzqvtrNqM'
     },
     {
-      bank: 'Альфа-Банк - Апельсиновая карта',
-      opis: 'Кешбэк до 7% на продукты',
-      opis1: 'Оплачивайте баллами до 100%',
-      opis2: 'Бесплатное обслуживание',
-      image: alfa, // Ссылка на картинку
-      link: 'https://fin-lg.com/aff_c?aff_id=145356&offer_id=7049&p=10695&erid=2W5zFHrdQPS'
+      naprav: 'Школа по подготовке к ЕГЭ и ОГЭ',
+      image: insperian, // Ссылка на картинку
+      link: 'https://my.saleads.pro/s/cvo45?erid=2VtzqvPR239'
     },
     {
-      bank: 'МТС Деньги - Дебетовая карта',
-      opis: 'До 10 000 ₽ кешбэк в месяц',
-      opis1: '5% в супермаркетах',
-      opis2: '30% на связь',
-      image: mts, // Ссылка на картинку
-      link: 'https://fin-lg.com/aff_c?aff_id=145356&offer_id=6766&p=10695&erid=2W5zFFy4MBv'
+      naprav: 'ИТ, дизайн и создание игр',
+      image: skilkids, // Ссылка на картинку
+      link: 'https://my.saleads.pro/s/zain6?erid=2VtzquibDyZ'
     },
     {
-      bank: 'Фора-Банк - Дебетовая Карта «Все включено»',
-      opis: 'До 10 000 ₽ кешбэк в месяц',
-      opis1: 'До 40% выгода от партнеров',
-      opis2: 'Бесплатное обслуживание',
-      image: fora, // Ссылка на картинку
-      link: 'https://go.leadgid.ru/aff_c?aff_id=145356&offer_id=6236&p=10695&erid=LjN8KXfdi'
+      naprav: 'Проф. переподготовка',
+      image: ipo, // Ссылка на картинку
+      link: 'https://my.saleads.pro/s/ehqrc?erid=2VtzqwhyoVH'
     },
     {
-      bank: 'Уралсиб Банк - карта "Прибыль"',
-      opis: 'Кешбэк рублями до 30%',
-      opis1: 'До 12.5% на остаток',
-      opis2: 'Бесплатное обслуживание',
-      image: ural, // Ссылка на картинку
-      link: 'https://fin-lg.com/aff_c?aff_id=145356&offer_id=5549&p=10695&erid=2W5zFGJHX4k'
+      naprav: 'Программирование для детей',
+      image: easy, // Ссылка на картинку
+      link: 'https://my.saleads.pro/s/x48fz?erid=2VtzqwwKThw'
     },
     {
-      bank: 'БСПБ - Дебетовая карта Яркая',
-      opis: 'Кешбэк до 25%',
-      opis1: 'До 15% годовых на остаток',
-      opis2: 'Бесплатное обслуживание',
-      image: bspb, // Ссылка на картинку
-      link: 'https://go.leadgid.ru/aff_c?aff_id=145356&offer_id=7224&p=10695&erid=2W5zFH96mxL'
+      naprav: 'Юридические профессии',
+      image: mds, // Ссылка на картинку
+      link: 'https://my.saleads.pro/s/tn5se?erid=2Vtzqwb1Pyx'
     },
     {
-      bank: 'Альфа Банк - Альфа‑Смарт',
-      opis: 'Кешбэк до 7000 ₽ в месяц',
-      opis1: '4 категории кешбэка',
-      opis2: 'Снятие до 200 000₽',
-      image: alfa, // Ссылка на картинку
-      link: 'https://my.saleads.pro/s/Jpxs2?erid=2VtzquvpuBc'
+      naprav: 'Дополнительное проф. образование',
+      image: runo, // Ссылка на картинку
+      link: 'https://my.saleads.pro/s/1r63x?erid=2VtzqxmPCfg'
     },
     {
-      bank: 'Альфа Банк - карта для Иностранцев',
-      opis: 'Вернем до 30% от стоимости',
-      opis1: 'Снятие наличных без комиссии',
-      opis2: 'Бесплатное обслуживание',
-      image: alfa, // Ссылка на картинку
-      link: 'https://my.saleads.pro/s/9ot3b?erid=2Vtzquzmzz2'
+      naprav: 'Доп. образование детей и взрослых',
+      image: school1, // Ссылка на картинку
+      link: 'https://my.saleads.pro/s/gfclt?erid=2VtzquXyySu'
     },
     {
-      bank: 'Ак Барс Банк - дебетовая карта Барс Карта',
-      opis: 'Кешбек до 10%',
-      opis1: 'До 9% годовых',
-      opis2: 'Бесплатное обслуживание',
-      image: bars, // Ссылка на картинку
-      link: 'https://my.saleads.pro/s/mi1lJ?erid=2VtzqwFPgna'
+      naprav: 'Большое количество направлений',
+      image: mti, // Ссылка на картинку
+      link: 'https://my.saleads.pro/s/jszp1?erid=2VtzqwFQ9oU'
     },
     {
-      bank: 'ОТП Банк - Дебетовая карта Premium',
-      opis: 'Кешбэк до 5%',
-      opis1: 'Переводы SWIFT',
-      opis2: 'Бесплатное обслуживание',
-      image: otp, // Ссылка на картинку
-      link: 'https://my.saleads.pro/s/u8jom?erid=2Vtzqx9h7XU'
+      naprav: 'Разные направления дизайна',
+      image: logocar, // Ссылка на картинку
+      link: 'https://my.saleads.pro/s/23eog?erid=2VtzqxQJ1Qr'
     },
     {
-      bank: 'ОТП Банк - Дебетовая карта «ОТП карта»',
-      opis: 'Кешбэк  до 10%',
-      opis1: 'Снятие до 500 000 ₽',
-      opis2: 'Бесплатное обслуживание',
-      image: otp, // Ссылка на картинку
-      link: 'https://my.saleads.pro/s/k52i0?erid=2VtzqvZiBDx'
+      naprav: 'Разнообразные направления ИТ',
+      image: bonnie, // Ссылка на картинку
+      link: 'https://my.saleads.pro/s/blxij?erid=2VtzqwNpytA'
     },
     {
-      bank: ' Альфа Банк - карта для молодёжи',
-      opis: 'Игры с кешбэком до 10%',
-      opis1: 'Выгода до 100%',
-      opis2: 'Бесплатное обслуживание',
-      image: alfa, // Ссылка на картинку
-      link: 'https://my.saleads.pro/s/y6bqu?erid=2Vtzquwp2RL'
+      naprav: 'Подготовка к ЕГЭ и ОГЭ',
+      image: lend, // Ссылка на картинку
+      link: 'https://my.saleads.pro/s/Jptq2?erid=2VtzqvZqGYW'
     },
     {
-      bank: 'Т-Банк - дебетовая карта Drive',
-      opis: 'До 10% за покупки на АЗС',
-      opis1: 'До 5% за автоуслуги',
-      opis2: '1% за другие покупки',
-      image: tin, // Ссылка на картинку
-      link: 'https://my.saleads.pro/s/dcJ8k?erid=2Vtzqvk9Tcz'
+      naprav: 'Интегративная нутрициология',
+      image: miin, // Ссылка на картинку
+      link: 'https://my.saleads.pro/s/9o18b?erid=2VtzqwHS44W'
     },
     {
-      bank: 'Альфа Банк - карта для самозанятых',
-      opis: 'До 100% кешбэк на остаток',
-      opis1: 'Низкие налоговые ставки',
-      opis2: 'Бесплатное обслуживание',
-      image: alfa, // Ссылка на картинку
-      link: 'https://my.saleads.pro/s/7z95y?erid=2VtzquvL38z'
+      naprav: 'Курсы для детей от 5 лет и до 11 класса ',
+      image: tochkaznanii, // Ссылка на картинку
+      link: 'https://my.saleads.pro/s/mig5J?erid=2VtzqwyFK4y'
     },
     {
-      bank: 'Альфа Банк - «Пенсия в Альфа-Банке»',
-      opis: '5% кешбэк в аптеках',
-      opis1: 'Защита от мошенников',
-      opis2: 'Бесплатное обслуживание',
-      image: alfa, // Ссылка на картинку
-      link: 'https://my.saleads.pro/s/wem6d?erid=2Vtzqutr3re'
+      naprav: 'Институт психологии',
+      image: smart, // Ссылка на картинку
+      link: 'https://my.saleads.pro/s/0qj69?erid=2VtzqwBP3fk'
     },
     {
-      bank: 'Т-Банк - дебетовая карта Islam Black',
-      opis: 'Кэшбэк до 3 000 ₽ в месяц',
-      opis1: 'до 30 млн ₽ в месяц через СБП',
-      opis2: 'Не требуется паспорт',
-      image: tin, // Ссылка на картинку
-      link: 'https://my.saleads.pro/s/vx0c7?erid=2Vtzqw2cQni'
+      naprav: 'Доступное IT-образование',
+      image: merion, // Ссылка на картинку
+      link: 'https://my.saleads.pro/s/h1yrv?erid=2Vtzqv9afD8'
     },
     {
-      bank: 'Т-Банк - дебетовая карта Black Premium',
-      opis: 'Кэшбэк 5% на рестораны',
-      opis1: 'До 60 000 ₽ кэшбэк за покупки',
-      opis2: 'До 14% годовых по вкладу',
-      image: tin, // Ссылка на картинку
-      link: 'https://my.saleads.pro/s/atuzw?erid=2VtzqupQ61c'
+      naprav: 'Современное бизнес-образование',
+      image: mbi, // Ссылка на картинку
+      link: 'https://my.saleads.pro/s/u82cm?erid=2VtzqweABux'
     },
     {
-      bank: 'Т-Банк - дебетовая карта для нерезидентов',
-      opis: 'Кешбэк до 3000₽ в месяц',
-      opis1: 'Переводы за рубеж до 5 млн',
-      opis2: 'Бесплатное обслуживание',
-      image: tin, // Ссылка на картинку
-      link: 'https://my.saleads.pro/s/h1kev?erid=2VtzqvhJsaN'
+      naprav: 'Разные направления психологии',
+      image: mipo, // Ссылка на картинку
+      link: 'https://my.saleads.pro/s/k5bz0?erid=2VtzquX77Mp'
     },
     {
-      bank: 'Т-Банк - дебетовая карта ALL Airlines',
-      opis: 'До 30% кэшбэк милями',
-      opis1: '1,5% за повседневные покупки',
-      opis2: 'До 5% за авиабилеты',
-      image: tin, // Ссылка на картинку
-      link: 'https://my.saleads.pro/s/4gyxa?erid=2Vtzqv8CvrA'
-    },
-    {
-      bank: 'Альфа Банк - дебетовая детская карта',
-      opis: 'Кэшбэк до 10 в Пятёрочке',
-      opis1: 'Кешбэк до 2000 ₽ месяц',
-      opis2: 'Бесплатное обслуживание',
-      image: tin, // Ссылка на картинку
-      link: 'https://my.saleads.pro/s/r27g4?erid=2Vtzqunv6jG'
-    },
-    {
-      bank: 'Т-Банк - карта Black Молодежная',
-      opis: 'До 30% — от партнеров',
-      opis1: 'Бесплатная доставка',
-      opis2: 'Вернем 1% за все покупки',
-      image: tin, // Ссылка на картинку
-      link: 'https://my.saleads.pro/s/fbwjn?erid=2VtzqwntwD8'
-    },
-    {
-      bank: 'Т-Банк - дебетовая карта Джуниор',
-      opis: 'Кэшбэк до 30%',
-      opis1: 'Снятие до 20 000 ₽ в месяц',
-      opis2: 'Бесплатно навсегда',
-      image: tin, // Ссылка на картинку
-      link: 'https://my.saleads.pro/s/sJv2r?erid=2VtzqwXwfsc'
+      naprav: 'Программирование для детей',
+      image: algo, // Ссылка на картинку
+      link: 'https://my.saleads.pro/s/y6Jeu?erid=2Vtzqv8BaEi'
     },
   ];
 

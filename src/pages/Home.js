@@ -10,6 +10,8 @@ import KreditHistory from '../images/KreditHistory.png'; // 👈 Иконка д
 import Monetka from '../images/monetka.png';       // 👈 Иконка для "Образование"
 import Obrozovanie from '../images/obrozovanie.png';     // 👈 Иконка для "Букмейкеры"
 import Kreditos from '../images/grafik.png';// 👈 Иконка для "Кредитный рейтинг"
+import Rabota from '../images/rabota.png';// 👈 Иконка для "Вакансии"
+import Debetcard from '../images/debetcard.png';// 👈 Иконка для "Дебетовые карты"
 
 
 const Home = () => {
@@ -36,21 +38,32 @@ const Home = () => {
                     <Link to="/"><h4>Кредитная история</h4></Link>
                     {/* <a href="https://nbki.ru/nbki-history" target="_blank" rel="noopener noreferrer">Перейти</a> */}
                   </div>
-                 
                   <div class="header__block-items-block">
-                    <img src={Monetka} alt="Букмейкеры" className="icon" />
-                    <Link to="/"><h4>Букмейкеры</h4></Link>
-                    
-                  </div> 
-                  <div class="header__block-items-block">
-                    <img src={KreditHistory} alt="Кредитный рейтинг" className="icon" />
-                    <Link to="/"><h4>Кредитный рейтинг</h4></Link>
-                    
+                    <img src={Debetcard} alt="Образование" className="icon" />
+                    <Link to="/Cards"><h4>Дебетовые карты</h4></Link>
+
                   </div>
+
                   <div class="header__block-items-block">
                     <img src={Obrozovanie} alt="Образование" className="icon" />
                     <Link to="/Education"><h4>Образование</h4></Link>
-                   
+
+                  </div>
+                  <div class="header__block-items-block">
+                    <img src={Kreditos} alt="Кредитный рейтинг" className="icon" />
+                    <Link to="/"><h4>Кредитный рейтинг</h4></Link>
+
+                  </div>
+                  <div class="header__block-items-block">
+                    <img src={Monetka} alt="Букмейкеры" className="icon" />
+                    <Link to="/"><h4>Букмейкеры</h4></Link>
+
+                  </div>
+
+                  <div class="header__block-items-block">
+                    <img src={Rabota} alt="Образование" className="icon" />
+                    <Link to="/Job"><h4>Вакансии</h4></Link>
+
                   </div>
                 </div>
               </div>

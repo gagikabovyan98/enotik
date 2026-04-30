@@ -36,6 +36,7 @@ const Navbar = () => {
         <Link to="/auto-loans" onClick={() => setIsMenuOpen(false)}>Кредитные карты</Link>
         <Link to="/collateral-loans" onClick={() => setIsMenuOpen(false)}>Кредиты под залог</Link>
         <Link to="/Job" onClick={() => setIsMenuOpen(false)}>Вакансии</Link>
+        <Link to="/Education" onClick={() => setIsMenuOpen(false)}>Обучение</Link>
       </div>
     </nav>
   );
