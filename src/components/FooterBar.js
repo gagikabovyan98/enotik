@@ -1,6 +1,6 @@
 import './../App.css';
-import vkIcon from './../images/vk-vk.png'; // Импортируем изображение
-import tgIcon from './../images/tg-tg.png'; // Импортируем изображение
+import vkIcon from './../images/vkontakte.png'; // Импортируем изображение
+import tgIcon from './../images/telega.png'; // Импортируем изображение
 import max from './../images/max.png'; // Импортируем изображение
 
 const FooterBar = () => {
