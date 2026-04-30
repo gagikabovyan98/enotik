@@ -78,6 +78,13 @@
       }
 }
 
+@media (max-width: 320px) {
+  .calculator-container {
+    margin-top: 200px;
+    width: 280px;
+}
+}
+
 
 
 

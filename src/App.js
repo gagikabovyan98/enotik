@@ -25,6 +25,7 @@ function App() {
           <Route path="/auto-loans" element={<AutoLoans />} />
           <Route path="/collateral-loans" element={<CollateralLoans />} />
           <Route path="/Job" element={<Job />} />
+          <Route path="/Education" element={<Job />} />
         </Routes>
         <FooterBar />
       </BrowserRouter>

@@ -49,7 +49,7 @@ const Home = () => {
                   </div>
                   <div class="header__block-items-block">
                     <img src={Obrozovanie} alt="Образование" className="icon" />
-                    <Link to="/"><h4>Образование</h4></Link>
+                    <Link to="/Education"><h4>Образование</h4></Link>
                    
                   </div>
                 </div>
