@@ -14,7 +14,7 @@ const Education = ({ bank, naprav, image, link }) => {
           <p class="cart-content-naprav-p"><strong>{naprav}</strong></p>
           </div>
 
-        <a href={link} target="_blank" rel="noopener noreferrer" className="btn-apply">ПОЛУЧИТЬ ДЕНЬГИ</a>
+        <a href={link} target="_blank" rel="noopener noreferrer" className="btn-apply">ПОДРОБНЕЕ</a>
       </div>
 
       
