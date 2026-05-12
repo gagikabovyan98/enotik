@@ -336,12 +336,19 @@ span {
     width: 280px;
   }
 
+	.header__block-content-right {
+		margin-left: 95px;
+	}
+
   .header__h1 {
-    font-size: 74px;
+		margin-left: 40px;
+    font-size: 58px;
+		margin-bottom: 20px;
   }
 
   .header__h2 {
-    font-size: 74px;
+		margin-left: 40px;
+    font-size: 58px;
   }
 
   .Footer {
