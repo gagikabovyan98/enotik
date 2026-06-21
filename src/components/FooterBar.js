@@ -31,7 +31,7 @@ const FooterBar = () => {
                             {/* Ссылка с изображением и текстом */}
                             <a href="https://max.ru/join/ABBu3RDHXvg7o3V7RB0i0JE1rxw2ZYTbkEzYAliHJo4" target="_blank" rel="noopener noreferrer">
                                 <img src={max} alt="Логотип Вконтакте" className="footer-icon" />
-                                <p>Привет мир!</p>
+                               
                             </a>
 
                          
