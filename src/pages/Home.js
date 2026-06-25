@@ -12,6 +12,7 @@ import Obrozovanie from '../images/obrozovanie.png';     // 👈 Иконка д
 import Kreditos from '../images/grafik.png';// 👈 Иконка для "Кредитный рейтинг"
 import Rabota from '../images/rabota.png';// 👈 Иконка для "Вакансии"
 import Debetcard from '../images/debetcard.png';// 👈 Иконка для "Дебетовые карты"
+<meta name="telderi" content="4963ef5761a0660fa5d5122e01417096" />
 
 
 const Home = () => {
