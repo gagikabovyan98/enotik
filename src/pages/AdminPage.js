@@ -179,6 +179,8 @@ const AdminPage = () => {
   const [galleryForm, setGalleryForm] = useState(emptyGalleryItem);
   const [reviewForm, setReviewForm] = useState(emptyReview);
   const [saving, setSaving] = useState(false);
+  const [statusMessage, setStatusMessage] = useState('');
+  const [statusType, setStatusType] = useState('');
 
   const groupedProducts = useMemo(() => {
     const items = bootstrap?.products || [];
@@ -213,6 +215,7 @@ const AdminPage = () => {
     event.preventDefault();
     try {
       setLoginError('');
+      setStatusMessage('');
       const data = await apiFetch('/auth/login', {
         method: 'POST',
         body: JSON.stringify(loginForm),
@@ -220,6 +223,8 @@ const AdminPage = () => {
       localStorage.setItem(STORAGE_KEY, data.access_token);
       setToken(data.access_token);
       await loadBootstrap(data.access_token);
+      setStatusType('success');
+      setStatusMessage('Вход выполнен');
     } catch (error) {
       setLoginError(error.message);
     }
@@ -231,6 +236,7 @@ const AdminPage = () => {
     event.preventDefault();
     setSaving(true);
     try {
+      setStatusMessage('');
       const data = await apiFetch('/admin/settings', {
         method: 'PUT',
         headers: authHeaders,
@@ -238,6 +244,11 @@ const AdminPage = () => {
       });
       setSettingsForm(data);
       await loadBootstrap();
+      setStatusType('success');
+      setStatusMessage('Настройки сохранены. При необходимости нажмите "Обновить".');
+    } catch (error) {
+      setStatusType('error');
+      setStatusMessage(typeof error.message === 'string' ? error.message : 'Не удалось сохранить настройки');
     } finally {
       setSaving(false);
     }
@@ -246,6 +257,7 @@ const AdminPage = () => {
   const saveEntity = async ({ path, form, resetForm, editId }) => {
     setSaving(true);
     try {
+      setStatusMessage('');
       await apiFetch(`${path}${editId ? `/${editId}` : ''}`, {
         method: editId ? 'PUT' : 'POST',
         headers: authHeaders,
@@ -253,6 +265,11 @@ const AdminPage = () => {
       });
       resetForm();
       await loadBootstrap();
+      setStatusType('success');
+      setStatusMessage(editId ? 'Изменения сохранены. При необходимости нажмите "Обновить".' : 'Запись добавлена. При необходимости нажмите "Обновить".');
+    } catch (error) {
+      setStatusType('error');
+      setStatusMessage(typeof error.message === 'string' ? error.message : 'Не удалось сохранить запись');
     } finally {
       setSaving(false);
     }
@@ -265,11 +282,17 @@ const AdminPage = () => {
 
     setSaving(true);
     try {
+      setStatusMessage('');
       await apiFetch(`${path}/${id}`, {
         method: 'DELETE',
         headers: authHeaders,
       });
       await loadBootstrap();
+      setStatusType('success');
+      setStatusMessage('Запись удалена. При необходимости нажмите "Обновить".');
+    } catch (error) {
+      setStatusType('error');
+      setStatusMessage(typeof error.message === 'string' ? error.message : 'Не удалось удалить запись');
     } finally {
       setSaving(false);
     }
@@ -341,6 +364,7 @@ const AdminPage = () => {
       </div>
 
       {loadError && <p className="admin-error">{loadError}</p>}
+      {statusMessage && <p className={statusType === 'success' ? 'admin-success' : 'admin-error'}>{statusMessage}</p>}
 
       {activeTab === 'settings' && (
         <section className="admin-section">

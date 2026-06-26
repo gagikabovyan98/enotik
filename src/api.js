@@ -18,12 +18,13 @@ export const normalizeAssetUrl = (url) => {
 };
 
 export const apiFetch = async (path, options = {}) => {
+  const { headers: customHeaders = {}, ...restOptions } = options;
   const response = await fetch(`${API_BASE}${path}`, {
+    ...restOptions,
     headers: {
       'Content-Type': 'application/json',
-      ...(options.headers || {}),
+      ...customHeaders,
     },
-    ...options,
   });
 
   if (!response.ok) {
