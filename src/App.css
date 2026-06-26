@@ -337,6 +337,12 @@ a:active {
   gap: 8px;
 }
 
+.admin-field span,
+.admin-login-card span,
+.admin-section span {
+  color: #111;
+}
+
 .admin-field-full {
   grid-column: 1 / -1;
 }
