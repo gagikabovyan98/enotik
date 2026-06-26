@@ -156,6 +156,27 @@ const UploadField = ({ token, onUploaded }) => {
   );
 };
 
+const uploadDataUrl = async (dataUrl, token) => {
+  const response = await fetch(dataUrl);
+  const blob = await response.blob();
+  const extension = blob.type.split('/')[1] || 'png';
+  const file = new File([blob], `upload.${extension}`, { type: blob.type || 'image/png' });
+  const formData = new FormData();
+  formData.append('file', file);
+
+  const uploadResponse = await fetch(`${API_BASE}/admin/upload`, {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${token}` },
+    body: formData,
+  });
+
+  if (!uploadResponse.ok) {
+    throw new Error('Не удалось загрузить изображение');
+  }
+
+  return uploadResponse.json();
+};
+
 const SectionList = ({ title, items, renderItem, emptyText }) => (
   <section className="admin-section">
     <div className="admin-section-header">
@@ -258,10 +279,21 @@ const AdminPage = () => {
     setSaving(true);
     try {
       setStatusMessage('');
+      const payload = { ...form };
+
+      if (typeof payload.image_url === 'string' && payload.image_url.startsWith('data:image/')) {
+        const uploaded = await uploadDataUrl(payload.image_url, token);
+        payload.image_url = uploaded.url;
+      }
+
+      if (typeof payload.link_url === 'string' && payload.link_url.startsWith('data:')) {
+        throw new Error('В поле ссылки должен быть обычный URL, а не изображение base64');
+      }
+
       await apiFetch(`${path}${editId ? `/${editId}` : ''}`, {
         method: editId ? 'PUT' : 'POST',
         headers: authHeaders,
-        body: JSON.stringify(form),
+        body: JSON.stringify(payload),
       });
       resetForm();
       await loadBootstrap();

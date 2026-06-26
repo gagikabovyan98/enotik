@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 
 class Token(BaseModel):
@@ -118,7 +118,21 @@ class ProductBase(BaseModel):
 
 
 class ProductCreate(ProductBase):
-    pass
+    @field_validator("link_url")
+    @classmethod
+    def validate_link_url(cls, value: str) -> str:
+        if value.startswith("data:"):
+            raise ValueError("Link URL must be a normal URL, not base64 data")
+        if len(value) > 1000:
+            raise ValueError("Link URL is too long")
+        return value
+
+    @field_validator("image_url")
+    @classmethod
+    def validate_image_url(cls, value: str | None) -> str | None:
+        if value and len(value) > 1000 and not value.startswith("/media/"):
+            raise ValueError("Image URL is too long. Upload the image first.")
+        return value
 
 
 class ProductRead(ProductBase):

@@ -4,6 +4,7 @@ from uuid import uuid4
 from fastapi import Depends, FastAPI, File, HTTPException, UploadFile, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+from sqlalchemy.exc import DataError, IntegrityError
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
@@ -150,7 +151,11 @@ def register_crud_routes(prefix: str, model, create_schema, read_schema):
     def create_item(payload: create_schema, _: object = Depends(get_current_admin), db: Session = Depends(get_db)):
         item = model(**payload.model_dump())
         db.add(item)
-        db.commit()
+        try:
+            db.commit()
+        except (DataError, IntegrityError) as exc:
+            db.rollback()
+            raise HTTPException(status_code=400, detail="Invalid or too long field value") from exc
         db.refresh(item)
         return read_schema.model_validate(item)
 
@@ -159,7 +164,11 @@ def register_crud_routes(prefix: str, model, create_schema, read_schema):
         item = get_or_404(db, model, item_id)
         for key, value in payload.model_dump().items():
             setattr(item, key, value)
-        db.commit()
+        try:
+            db.commit()
+        except (DataError, IntegrityError) as exc:
+            db.rollback()
+            raise HTTPException(status_code=400, detail="Invalid or too long field value") from exc
         db.refresh(item)
         return read_schema.model_validate(item)
 
