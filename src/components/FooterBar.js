@@ -1,45 +1,38 @@
 import './../App.css';
-import vkIcon from './../images/vkontakte.png'; // Импортируем изображение
-import tgIcon from './../images/telega.png'; // Импортируем изображение
-import max from './../images/max.png'; // Импортируем изображение
+import vkIcon from './../images/vkontakte.png';
+import tgIcon from './../images/telega.png';
+import max from './../images/max.png';
 
-const FooterBar = () => {
+const iconMap = {
+    VK: vkIcon,
+    Telegram: tgIcon,
+    Max: max,
+};
+
+const FooterBar = ({ settings }) => {
+    const disclaimerLines = settings?.footer_disclaimer_lines || [];
+    const cookieLines = settings?.footer_cookie_lines || [];
+    const socialLinks = settings?.social_links || [];
+
     return (
         <section className="Footer">
             <footer className="footer">
                 <div className="container">
                     <div className="footer__content">
-                        <p>Сервис не занимается деятельностью по предоставлению банковских услуг и выдаче займов. </p>
-                        <p>Содержание сайта не является рекомендацией или офертой, вся информация носит ознакомительный характер.</p>
-                        <p>При использовании материалов гиперссылка на Енот Мани обязательна.</p>
+                        {disclaimerLines.map((line, index) => <p key={index}>{line}</p>)}
                     </div>
 
                     <div className="footer__content-title">
-                        <p>Мы используем файлы cookie, чтобы предоставить пользователям больше возможностей при посещении сайта Енот Мани</p>
-                        <p>Продолжая пользоваться сайтом, вы даёте согласие на использование cookie и обработку персональных данных.</p>
-                        <p>Условия использования</p>
-                        <p>Оценивайте свои финансовые возможности и риски</p>
+                        {cookieLines.map((line, index) => <p key={index}>{line}</p>)}
                     </div>
 
                     <div className="footer__content-icon">
                         <div className="icon__content">
-                            {/* Ссылка с изображением и текстом */}
-                            <a href="https://vk.com/skupka_59_perm" target="_blank" rel="noopener noreferrer">
-                                <img src={vkIcon} alt="Логотип Вконтакте" className="footer-icon" />
-                                
-                            </a>
-                            {/* Ссылка с изображением и текстом */}
-                            <a href="https://max.ru/join/ABBu3RDHXvg7o3V7RB0i0JE1rxw2ZYTbkEzYAliHJo4" target="_blank" rel="noopener noreferrer">
-                                <img src={max} alt="Логотип Вконтакте" className="footer-icon" />
-                               
-                            </a>
-
-                         
-
-                            {/* Еще одна ссылка с изображением (иконка) */}
-                            <a href="https://t.me/enot_mani" target="_blank" rel="noopener noreferrer">
-                                <img src={tgIcon} alt="Логотип Одноклассники" className="footer-icon" />
-                            </a>
+                            {socialLinks.map((item, index) => (
+                                <a key={index} href={item.url} target="_blank" rel="noopener noreferrer">
+                                    <img src={iconMap[item.label] || vkIcon} alt={item.label} className="footer-icon" />
+                                </a>
+                            ))}
                         </div>
                     </div>
                 </div>

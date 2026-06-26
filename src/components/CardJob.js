@@ -1,19 +1,20 @@
 import './../App.css'; // Импорт стилей из корня
+import { normalizeAssetUrl } from '../api';
 
-const CardJob = ({ nameis, image, spec, link }) => {
+const CardJob = ({ title, subtitle, image_url, link_url, cta_text }) => {
   return (
     <div className="card">
       {/* Блок для изображения */}
       <div className="card-image">
-        <img src={image} alt={nameis} />
+        <img src={normalizeAssetUrl(image_url)} alt={title} />
       </div>
       
       <div className="card-content">
-        <h3>{nameis}</h3>
+        <h3>{title}</h3>
        
-        <p class="card-content-job"><strong>Напрапвление:</strong> {spec}</p>
+        <p class="card-content-job"><strong>Направление:</strong> {subtitle}</p>
         
-        <a href={link} target="_blank" rel="noopener noreferrer" className="btn-apply">ОСТАВИТЬ ЗАЯВКУ</a>
+        <a href={link_url} target="_blank" rel="noopener noreferrer" className="btn-apply">{cta_text || 'ОСТАВИТЬ ЗАЯВКУ'}</a>
       </div>
     </div>
   );

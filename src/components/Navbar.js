@@ -1,18 +1,18 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import logoImage from '../images/logo.png'; // <-- НОВЫЙ ИМПОРТ
+import { normalizeAssetUrl } from '../api';
 import './../App.css'; // Импорт стилей из корня проекта
 
-const Navbar = () => {
+const Navbar = ({ settings, navItems = [] }) => {
   // Состояние для управления видимостью мобильного меню
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <nav className="navbar">
       <div class="navbar__logo-title">
-        <h1 class="navbar__h1">ЕнотМани</h1>
+        <h1 class="navbar__h1">{settings?.site_name || 'ЕнотМани'}</h1>
         <Link to="/" className="logo">
-          <img src={logoImage} alt="ЕнотМани Логотип" className="logo-img" />
+          <img src={normalizeAssetUrl(settings?.logo_url || '/seed-assets/logo.png')} alt="ЕнотМани Логотип" className="logo-img" />
         </Link>
       </div>
 
@@ -29,14 +29,11 @@ const Navbar = () => {
 
       {/* Ссылки меню */}
       <div className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
-        {/* При клике на ссылку в мобильном меню, оно закрывается */}
-        <Link to="/loans" onClick={() => setIsMenuOpen(false)}>Займы</Link>
-        <Link to="/cards" onClick={() => setIsMenuOpen(false)}>Дебетовые карты</Link>
-        <Link to="/consumer-loans" onClick={() => setIsMenuOpen(false)}>Потребительские кредиты</Link>
-        <Link to="/auto-loans" onClick={() => setIsMenuOpen(false)}>Кредитные карты</Link>
-        <Link to="/collateral-loans" onClick={() => setIsMenuOpen(false)}>Кредиты под залог</Link>
-        <Link to="/Job" onClick={() => setIsMenuOpen(false)}>Вакансии</Link>
-        <Link to="/Education" onClick={() => setIsMenuOpen(false)}>Обучение</Link>
+        {navItems.map((item) => (
+          <Link key={item.id} to={item.path} onClick={() => setIsMenuOpen(false)}>
+            {item.label}
+          </Link>
+        ))}
       </div>
     </nav>
   );
