@@ -1,7 +1,10 @@
+import logging
+import time
 from pathlib import Path
 from uuid import uuid4
 
-from fastapi import Depends, FastAPI, File, HTTPException, UploadFile, status
+from fastapi import Depends, FastAPI, File, HTTPException, Request, UploadFile, status
+from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from sqlalchemy.exc import DataError, IntegrityError
@@ -31,6 +34,12 @@ from .schemas import (
 )
 from .seed_data import seed_database
 
+logging.basicConfig(
+    level=getattr(logging, settings.log_level.upper(), logging.INFO),
+    format="%(asctime)s %(levelname)s %(name)s %(message)s",
+)
+logger = logging.getLogger("enotik.api")
+
 app = FastAPI(title=settings.app_name)
 
 app.add_middleware(
@@ -49,6 +58,62 @@ with SessionLocal() as session:
     seed_database(session)
 
 app.mount(settings.media_url, StaticFiles(directory=settings.media_dir), name="media")
+
+
+@app.middleware("http")
+async def log_requests(request: Request, call_next):
+    request_id = uuid4().hex[:8]
+    started_at = time.perf_counter()
+    client_ip = request.client.host if request.client else "-"
+    logger.info(
+        "request_started request_id=%s method=%s path=%s client_ip=%s",
+        request_id,
+        request.method,
+        request.url.path,
+        client_ip,
+    )
+
+    try:
+        response = await call_next(request)
+    except Exception:
+        duration_ms = round((time.perf_counter() - started_at) * 1000, 2)
+        logger.exception(
+            "request_failed request_id=%s method=%s path=%s client_ip=%s duration_ms=%s",
+            request_id,
+            request.method,
+            request.url.path,
+            client_ip,
+            duration_ms,
+        )
+        raise
+
+    duration_ms = round((time.perf_counter() - started_at) * 1000, 2)
+    response.headers["X-Request-ID"] = request_id
+    logger.info(
+        "request_finished request_id=%s method=%s path=%s status_code=%s duration_ms=%s",
+        request_id,
+        request.method,
+        request.url.path,
+        response.status_code,
+        duration_ms,
+    )
+    return response
+
+
+@app.exception_handler(Exception)
+async def unhandled_exception_handler(request: Request, exc: Exception):
+    request_id = uuid4().hex[:8]
+    logger.exception(
+        "unhandled_exception request_id=%s method=%s path=%s",
+        request_id,
+        request.method,
+        request.url.path,
+        exc_info=exc,
+    )
+    return JSONResponse(
+        status_code=500,
+        content={"detail": "Internal Server Error", "request_id": request_id},
+    )
 
 
 def list_query(model, db: Session):
@@ -78,7 +143,9 @@ def healthcheck() -> dict[str, str]:
 def login(payload: LoginPayload, db: Session = Depends(get_db)) -> Token:
     admin = authenticate_admin(db, payload.username, payload.password)
     if not admin:
+        logger.warning("login_failed username=%s", payload.username)
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid credentials")
+    logger.info("login_success username=%s", admin.username)
     return Token(access_token=create_access_token(admin.username))
 
 
@@ -117,7 +184,7 @@ def admin_bootstrap(
 @app.put(f"{settings.api_prefix}/admin/settings", response_model=SiteSettingsRead)
 def update_settings(
     payload: SiteSettingsUpdate,
-    _: object = Depends(get_current_admin),
+    admin: object = Depends(get_current_admin),
     db: Session = Depends(get_db),
 ) -> SiteSettingsRead:
     settings_row = get_site_settings(db)
@@ -125,42 +192,52 @@ def update_settings(
         setattr(settings_row, key, value)
     db.commit()
     db.refresh(settings_row)
+    logger.info("settings_updated admin=%s", getattr(admin, "username", "unknown"))
     return SiteSettingsRead.model_validate(settings_row)
 
 
 @app.post(f"{settings.api_prefix}/admin/upload")
 def upload_file(
     file: UploadFile = File(...),
-    _: object = Depends(get_current_admin),
+    admin: object = Depends(get_current_admin),
 ) -> dict[str, str]:
     suffix = Path(file.filename or "").suffix.lower()
     filename = f"{uuid4().hex}{suffix}"
     destination = media_path / filename
     with destination.open("wb") as output:
         output.write(file.file.read())
+    logger.info(
+        "file_uploaded admin=%s original_name=%s stored_name=%s",
+        getattr(admin, "username", "unknown"),
+        file.filename,
+        filename,
+    )
     return {"url": f"{settings.media_url}/{filename}"}
 
 
 def register_crud_routes(prefix: str, model, create_schema, read_schema):
     @app.get(f"{settings.api_prefix}/admin/{prefix}", response_model=list[read_schema])
-    def list_items(_: object = Depends(get_current_admin), db: Session = Depends(get_db)):
+    def list_items(admin: object = Depends(get_current_admin), db: Session = Depends(get_db)):
         items = list_query(model, db)
+        logger.info("crud_list admin=%s resource=%s count=%s", getattr(admin, "username", "unknown"), prefix, len(items))
         return [read_schema.model_validate(item) for item in items]
 
     @app.post(f"{settings.api_prefix}/admin/{prefix}", response_model=read_schema)
-    def create_item(payload: create_schema, _: object = Depends(get_current_admin), db: Session = Depends(get_db)):
+    def create_item(payload: create_schema, admin: object = Depends(get_current_admin), db: Session = Depends(get_db)):
         item = model(**payload.model_dump())
         db.add(item)
         try:
             db.commit()
         except (DataError, IntegrityError) as exc:
             db.rollback()
+            logger.warning("crud_create_failed admin=%s resource=%s error=%s", getattr(admin, "username", "unknown"), prefix, type(exc).__name__)
             raise HTTPException(status_code=400, detail="Invalid or too long field value") from exc
         db.refresh(item)
+        logger.info("crud_created admin=%s resource=%s item_id=%s", getattr(admin, "username", "unknown"), prefix, item.id)
         return read_schema.model_validate(item)
 
     @app.put(f"{settings.api_prefix}/admin/{prefix}" + "/{item_id}", response_model=read_schema)
-    def update_item(item_id: int, payload: create_schema, _: object = Depends(get_current_admin), db: Session = Depends(get_db)):
+    def update_item(item_id: int, payload: create_schema, admin: object = Depends(get_current_admin), db: Session = Depends(get_db)):
         item = get_or_404(db, model, item_id)
         for key, value in payload.model_dump().items():
             setattr(item, key, value)
@@ -168,15 +245,18 @@ def register_crud_routes(prefix: str, model, create_schema, read_schema):
             db.commit()
         except (DataError, IntegrityError) as exc:
             db.rollback()
+            logger.warning("crud_update_failed admin=%s resource=%s item_id=%s error=%s", getattr(admin, "username", "unknown"), prefix, item_id, type(exc).__name__)
             raise HTTPException(status_code=400, detail="Invalid or too long field value") from exc
         db.refresh(item)
+        logger.info("crud_updated admin=%s resource=%s item_id=%s", getattr(admin, "username", "unknown"), prefix, item_id)
         return read_schema.model_validate(item)
 
     @app.delete(f"{settings.api_prefix}/admin/{prefix}" + "/{item_id}", status_code=status.HTTP_204_NO_CONTENT)
-    def delete_item(item_id: int, _: object = Depends(get_current_admin), db: Session = Depends(get_db)):
+    def delete_item(item_id: int, admin: object = Depends(get_current_admin), db: Session = Depends(get_db)):
         item = get_or_404(db, model, item_id)
         db.delete(item)
         db.commit()
+        logger.info("crud_deleted admin=%s resource=%s item_id=%s", getattr(admin, "username", "unknown"), prefix, item_id)
 
 
 register_crud_routes("nav-items", NavItem, NavItemCreate, NavItemRead)

@@ -4,6 +4,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 class Settings(BaseSettings):
     app_name: str = "Enotik API"
     api_prefix: str = "/api"
+    log_level: str = "INFO"
     secret_key: str = "change-me-in-production"
     access_token_expire_minutes: int = 60 * 24
     database_url: str = "postgresql+psycopg://enotik:enotik@db:5432/enotik"
